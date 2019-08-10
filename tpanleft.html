@@ -31,6 +31,11 @@ function chosen_cheat(s) {
 
 </SCRIPT>
 
+<script>
+function defaultStopMusic() {};
+window.stopMusic = defaultStopMusic;
+</script>
+
 
 </head>
 <body bgcolor="#000000">
@@ -40,9 +45,9 @@ function chosen_cheat(s) {
 <area shape="RECT" coords="97,29,125,41" href="JavaScript:map();" alt="Map">
 <area shape="CIRCLE" coords="232,50,17" href="JavaScript:cheat();" alt="Cheat">
 <area shape="RECT" coords="1,21,45,34" href="midi.html" target="dummy" alt="MIDI">
-<area shape="RECT" coords="3,41,46,55" id="mod" target="dummy" alt="MOD">
+<area shape="RECT" coords="3,41,46,55" id="music-mod"  alt="MOD">
 <area shape="RECT" coords="7,61,52,75" href="sid.html" target="dummy" alt="SID">
-<area shape="RECT" coords="18,81,59,95" href="none.html" target="dummy" alt="None">
+<area shape="RECT" coords="18,81,59,95" id="music-none"alt="None">
 </map>
 
 <table width=286 border=0 cellpadding=0 cellspacing=0>
@@ -53,10 +58,17 @@ function chosen_cheat(s) {
 <tr><td colspan=3><img src="tpan1e.gif" border=0 width=286 height=103 usemap="#buttons"></td></tr>
 </table>
 <script>
-document.getElementById("mod").addEventListener("click", function(e){
+document.getElementById("music-none").addEventListener("click", function(e) {
+	stopMusic();
+});
+document.getElementById("music-mod").addEventListener("click", function(e){
 	if(!window.chiptuneplayer) {
-		window.chiptuneplayer = new ChiptuneJsPlayer({});
+		window.chiptuneplayer = new ChiptuneJsPlayer(new ChiptuneJsConfig(-1));
 	}
+	window.stopMusic = function() {
+		window.chiptuneplayer.stop();
+		window.stopMusic = defaultStopMusic;
+	};
 	window.chiptuneplayer.load("thing.mod", buffer => window.chiptuneplayer.play(buffer));
 });
 </script>
