@@ -1,17 +1,8 @@
 <HTML>
 <head><title>MOD music</title>
-<script>window.libopenmpt = {};</script>
-<script src="music/chiptune2/libopenmpt.js"></script>
-<script src="music/chiptune2/chiptune2.js"></script>
-<script>
-if(!window.chiptuneplayer) {
-	window.chiptuneplayer = new ChiptuneJsPlayer(new ChiptuneJsConfig(-1));
-}
-window.chiptuneplayer.load("thing.mod", buffer => window.chiptuneplayer.play(buffer));
-</script>
 </head>
 <body bgcolor="#000000">
 <br>
-<!--<EMBED SRC="thing.mod" TYPE="audio/MOD" WIDTH=60 HEIGHT=30 loop="true" autostart="true">-->
+<audio src="thing.mod.mp3" autoplay="true" loop="true"></audio>
 </body>
 </HTML>
