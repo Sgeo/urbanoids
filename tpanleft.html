@@ -1,9 +1,6 @@
 <HTML>
 <head><title>No music</title>
 <script src="https://cjrtnc.leaningtech.com/1.4/loader.js"></script>
-<script>window.libopenmpt = {};</script>
-<script src="music/chiptune2/libopenmpt.js"></script>
-<script src="music/chiptune2/chiptune2.js"></script>
 <script>cheerpjInit();</script>
 
 <SCRIPT language="JavaScript">
@@ -11,30 +8,20 @@
 function start_it() {
  document.getElementById("game").clickStart();
 }
-
 function choose(s) {
  document.getElementById("game").chosenCity(s);
 }
-
 function cheat() {
  document.getElementById("game").clickCheat();
 }
-
 function map() {
  document.getElementById("game").clickMap();
 }
-
 function chosen_cheat(s) {
  document.getElementById("game").chosenCheat(s);
 }
 //-->
-
 </SCRIPT>
-
-<script>
-function defaultStopMusic() {};
-window.stopMusic = defaultStopMusic;
-</script>
 
 
 </head>
@@ -45,9 +32,9 @@ window.stopMusic = defaultStopMusic;
 <area shape="RECT" coords="97,29,125,41" href="JavaScript:map();" alt="Map">
 <area shape="CIRCLE" coords="232,50,17" href="JavaScript:cheat();" alt="Cheat">
 <area shape="RECT" coords="1,21,45,34" href="midi.html" target="dummy" alt="MIDI">
-<area shape="RECT" coords="3,41,46,55" id="music-mod"  alt="MOD">
+<area shape="RECT" coords="3,41,46,55" href="mod.html" target="dummy" alt="MOD">
 <area shape="RECT" coords="7,61,52,75" href="sid.html" target="dummy" alt="SID">
-<area shape="RECT" coords="18,81,59,95" id="music-none"alt="None">
+<area shape="RECT" coords="18,81,59,95" href="none.html" target="dummy" alt="None">
 </map>
 
 <table width=286 border=0 cellpadding=0 cellspacing=0>
@@ -57,21 +44,5 @@ window.stopMusic = defaultStopMusic;
 <td><img src="tpan1d.gif" width=19 height=263></td></tr>
 <tr><td colspan=3><img src="tpan1e.gif" border=0 width=286 height=103 usemap="#buttons"></td></tr>
 </table>
-<script>
-document.getElementById("music-none").addEventListener("click", function(e) {
-	stopMusic();
-});
-document.getElementById("music-mod").addEventListener("click", function(e){
-	stopMusic();
-	if(!window.chiptuneplayer) {
-		window.chiptuneplayer = new ChiptuneJsPlayer(new ChiptuneJsConfig(-1));
-	}
-	window.stopMusic = function() {
-		window.chiptuneplayer.stop();
-		window.stopMusic = defaultStopMusic;
-	};
-	window.chiptuneplayer.load("thing.mod", buffer => window.chiptuneplayer.play(buffer));
-});
-</script>
 </body>
 </HTML>
